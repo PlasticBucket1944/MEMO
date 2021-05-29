@@ -1,0 +1,12 @@
+〇2.0.5以降をインストール
+公式サイトからideをダウンロードすればOK
+
+〇2.0.4以下をインストール
+https://launchpad.net/sikuli/sikulix/2.0.4
+sikulixide、sikulixapiをダウンロード
+
+https://github.com/RaiMan/SikuliX1/wiki/How-to-make-Jython-ready-in-the-IDE
+Jython standalone jar package 2.7.1 をダウンロードする
+
+※sikulix.jarを起動後、jruby,jythonのjarは以下のフォルダに移動します。
+・C:\Users\ユーザ\AppData\Roaming\Sikulix\Extensions
