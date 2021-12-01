@@ -1,0 +1,3 @@
+Sprockets::Rails::Helper::AssetNotPrecompiled in が出てコケた
+https://qiita.com/sanriyochan/items/99d63e8a8691eb29fa4c
+scss導入すると発生した。なんかプリコンパイルの順番の問題っぽい？
