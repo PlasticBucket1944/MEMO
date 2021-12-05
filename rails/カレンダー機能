@@ -1,0 +1,20 @@
+simple_calendarってgemを使った
+使い方は以下を基本的に参照
+https://qiita.com/Naoki1126/items/a2dea050191be364806d
+
+バージョンは公式を確認しておく
+カレンダーに任意の値を表示されるとき
+
+１.表示させたいモデルにstart_timeメソッドを実装
+
+def start_time
+    self.date # 任意の日付設定
+end
+
+２.ビューのカレンダーメソッドにモデル追加
+<%= month_calendar events: @todo_lists do |date, event| %>
+  <%= date.day %>
+  <% event.each do |event| %>
+    <%= event.title %>
+  <% end %>
+<% end %>
