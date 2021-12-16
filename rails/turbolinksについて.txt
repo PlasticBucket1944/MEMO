@@ -1,0 +1,6 @@
+ページ遷移時bobyのみを入れ替えheadの再読込を省略し高速化を図るjsのライブラリ
+つまる所lordイベントが発生しなくなる
+ただし'turbolinks:load'などの代用イベントはちゃんと用意されている
+
+rails6での無効化は以下
+https://techtechmedia.com/turbolinks-rails/
