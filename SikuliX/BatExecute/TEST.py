@@ -6,5 +6,6 @@ paste("chrome")
 type(Key.ENTER)
 wait(2)
 paste(arg[1])
-paste(u"こんにちは") # u=日本語指定(UniCode)
-paste(arg[2])
+paste(u"こんにちは") # 日本語対応
+str = arg[2].encode('string-escape').decode('string-escape') # 日本語対応
+paste(str)
