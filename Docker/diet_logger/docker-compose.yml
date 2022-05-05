@@ -1,0 +1,29 @@
+version: '3'
+services:
+  # DB定義
+  db:
+    # ベースイメージ指定
+    image: mysql:8.0
+    # mysql8で必要な設定
+    command: --default-authentication-plugin=mysql_native_password
+    # データをコンテナ外に退避(ビルドするたびに消えないようにする)
+    volumes:
+      - ./src/db/mysql_data:/var/lib/mysql
+    # コンテナ内におけるmysqlのrootユーザーのパスワード指定
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+  # webサーバー定期
+  web:
+    # ベースイメージ指定(同ディレクトリ内のDockerfileを指定)
+    build: .
+    # up時に実行するコマンド
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    # railsプロジェクトをコンテナ内にコピー・同期
+    volumes:
+      - ./diet_logger:/app
+    # コンテナ内外のポートを同期
+    ports:
+      - "3000:3000"
+    # web側からdb側への参照名を指定
+    depends_on:
+      - db
