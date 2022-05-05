@@ -35,3 +35,6 @@ docker-compose run web rails db:migrate
 
 ８．コンテナ立ち上げ  
 docker-compose up  
+
+上手くいってたら以下で確認できる  
+http://localhost:3000/
