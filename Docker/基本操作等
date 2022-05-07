@@ -1,0 +1,35 @@
+○基本用語
+container  dockerを実行する最小の単位
+image      コンテナを作成する為のベース(元)
+dockerfile 独自のイメージを作る為の設定ファイル
+docker-compose 複数のイメージを管理する為のファイル、仕組み
+
+container操作
+イメージからコンテナを作る(動かさない)
+docker container create
+イメージからコンテナを作って動かす
+docker container run
+停止しているコンテナを起動
+docker container start
+コンテナ停止
+docker container stop
+コンテナ削除
+docker container rm
+コンテナ一覧表示
+docker container ls
+コンテナ内でコマンド実行
+docker container exec
+コンテナ→ホスト、または逆にファイルをコピー
+docker container cp
+
+○dockerfile操作
+イメージ作成
+docker build -t
+
+○docker-compose操作
+イメージ作成
+docker-compose build
+コンテナ内でコマンド実行
+docker-compose run [実行したいコンテナ名]
+コンテナ群起動
+docker-compose up
