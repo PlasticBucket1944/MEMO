@@ -5,7 +5,7 @@
 ２．作業用ディレクトリ内で以下のコマンドを実行してソース取得  
 git clone https://github.com/PlasticBucket1944/diet_logger
 
-３．diet_logger/config 下にdatebase.yml を作成  
+３．diet_logger/config 下にdatabase.yml を作成  
 中身はここに置いてある物をコピペ  
 ※DB接続の為のpassword、host名はdocker-compose.ymlに記載している物になっているので  
 　変えた場合はそれに合わせる  
