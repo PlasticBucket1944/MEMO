@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>request test html</title>
+  </head>
+  <body>
+    <h1>request test html</h1>
+
+    <div class="container">
+      <h1>request test</h1>
+
+      <p>node.jsでサーバーを立てれる機能をインストール</p>
+      <p>npm install -g http-server</p>
+      <p>サーバーを立てたいディレクトリで以下のコマンドでサーバー起動</p>
+      <p>http-server</p>
+
+
+      <h3>非同期</h3>
+      <div class="row align-items-center">
+        <div class="col border border-secondary" onclick="testGetAll(true)">
+          getAll request
+        </div>
+        <div class="row align-items-center">
+          <div class="col border border-secondary" onclick="testGetById(true)">
+            GetById request
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col border border-secondary" onclick="post(true)">
+            post request
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col border border-secondary" onclick="update(true)">
+            update patch request
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col border border-secondary" onclick="deleteById(true)">
+            delete request
+          </div>
+        </div>
+      </div>
+
+      <h3>同期</h3>
+      <div class="row align-items-center">
+        <div class="col border border-secondary" onclick="testGetAll(false)">
+          getAll request
+        </div>
+        <div class="row align-items-center">
+          <div class="col border border-secondary" onclick="testGetById(false)">
+            GetById request
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col border border-secondary" onclick="post(false)">
+            post request
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col border border-secondary" onclick="update(false)">
+            update patch request
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col border border-secondary" onclick="deleteById(false)">
+            delete request
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+
+    <script>
+      // ajax通信のコールバック関数を設定
+      var req = new XMLHttpRequest();
+      req.onreadystatechange = function() {
+        if (req.readyState == 4) { // 通信の完了時
+          if (req.status == 200) { // 通信の成功時
+            console.log('通信成功(get,post,delete)');
+            console.log(req.response);
+          } else if (req.status == 201) {
+            console.log('通信成功(post)');
+            console.log(req.response);
+          } else { // 通信失敗時
+            console.log('通信失敗');
+          }
+        } else {
+          console.log('通信中');
+          console.log(req.readyState);
+        }
+        console.log(req.status);
+      }
+
+      function testGetAll(async) {
+        console.log("testGetAll start");
+        req.open('GET', 'http://localhost:3000/tasks', async);
+        req.send(null);
+        console.log("testGetAll end");
+      }
+
+      function testGetById(async) {
+        console.log("testGetById start");
+        req.open('GET', 'http://localhost:3000/tasks/e4095ebb-c3e5-4b95-be7b-aed9dc7a347e', async);
+        req.send(null);
+        console.log("testGetById end");
+      }
+
+      function post(async) {
+        console.log("post start");
+        req.open('POST', 'http://localhost:3000/tasks', async);
+        req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        req.send('name=' + encodeURIComponent('req_test'));
+        console.log(req.responseText);
+        console.log("post end");
+      }
+
+      function update(async) {
+        console.log("update start");
+        req.open('PATCH', 'http://localhost:3000/tasks/bef859a8-3752-4b3e-9f75-2d40c424d4bb', async);
+        req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        req.send('status=' + encodeURIComponent(2));
+        console.log(req.responseText);
+        console.log("update end");
+      }
+      
+      function deleteById(async) {
+        console.log("deleteById start");
+        req.open('DELETE', 'http://localhost:3000/tasks/36b193c1-43b5-4abd-958e-2c4161b31d8a', async);
+        req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        req.send(null);
+        console.log(req.responseText);
+        console.log("deleteById end");
+      }
+      </script>
+      
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
