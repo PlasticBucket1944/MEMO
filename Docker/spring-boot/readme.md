@@ -21,6 +21,8 @@ sh gradlew build
 ```
 java -jar build/libs/api-0.0.1-SNAPSHOT.jar
 ```
+ここの「api」の箇所は作成したアプリケーションによって名前が変わるので注意！
+
 ７．以下からアクセスする  
 http://localhost:8080/  
 
